@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap");
+
+.main-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.search-cont {
+  margin: 1rem 0;
+}
+.search {
+  font-size: 2rem;
+  padding: 0.5rem 1.5rem;
+  outline: 0;
+  border-radius: 0.5rem;
+}
+.search-error {
+  border-color: red;
+}
+.outer-container {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.city-cont {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.city {
+  font-family: "Roboto", sans-serif;
+  background: rgb(99, 99, 134);
+  color: white;
+  border-radius: 0.5rem;
+  width: 25rem;
+  height: 18rem;
+  padding: 0.7rem 1rem;
+  margin-bottom: 0.7rem;
+  margin-right: 0.7rem;
+  font-weight: bold;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.upper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  clear: both;
+}
+.upper p {
+  margin: 0;
+  margin-top: 0.5rem;
+}
+.upper h2 {
+  margin: 0;
+}
+.deg {
+  font-size: 3rem;
+}
+.lower {
+  margin-top: 1.5rem;
+}
+.span1 {
+  margin-right: 0.5rem;
+}
+.other {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0.9rem 0.5rem 0.5rem;
+}
+.other-sub {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0.7rem 0;
+}
+.other-sub p {
+  margin: 0;
+}
+.other-sub p:first-child {
+  font-weight: bold;
+}
+.del, .space {
+  cursor: pointer;
+  padding: 0.3rem;
+  font-size: 1rem;
+  background: white;
+  border: none;
+  border-radius: 0.5rem;
+  color: red;
+  font-weight: bold;
+  transition: all 0.2s ease-in-out;
+  margin-bottom: 0.5rem;
+  float: right;
+}
+.del:hover {
+  background: red;
+  color: white;
+  transform: scale(1.1);
+}
+.space {
+ background: none;
+}
+
+.del:focus {
+  transform: scale(0.9);
+}

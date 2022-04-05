@@ -1,0 +1,105 @@
+<div class="main-container">
+  <div class="search-cont">
+    <input
+      [ngClass]="{ 'search-error': errorMessage }"
+      class="search"
+      type="text"
+      [placeholder]="errorMessage ? 'city not found...' : 'search city...'"
+      [(ngModel)]="cityname"
+      #ctrl="ngModel"
+      (keyup.enter)="onGetCity(ctrl.value, 'save')"
+      required
+    />
+    <button  (click)="deleteAllData()"  class="del"><i class="fa fa-trash" aria-hidden="true"> </i> Delete All Cities</button>
+     
+  </div>
+  <div class="outer-container">
+    <div>
+      <div class="city-cont">
+        <div
+          [ngStyle]="{
+            'background-image': onGetGif(city.results.weather[0].description)
+          }"
+          class="city"
+          *ngFor="let city of allCities; let i = index"
+        >
+        <div *ngIf=" i == 0"class="space"></div>
+          <button *ngIf=" i !== 0" (click)="deleteData('i')"  class="del"><i class="fa fa-trash" aria-hidden="true"> </i> Delete</button>
+        
+          <div class="upper">
+            <div>
+              <h2>
+                {{ i == 0 ? "My Location" : city.results.name }}
+                <span>{{ i == 0 ? "" : ", " + city.results.sys.country }}</span>
+              </h2>
+              <p>
+                {{ i == 0 ? city.results.name : (city.time | date: "h:mm a")
+                }}<span>{{
+                  i == 0 ? ", " + city.results.sys.country : ""
+                }}</span>
+              </p>
+            </div>
+            <div class="deg">
+              {{ city.results.main.temp | number: "1.0-0" }}&deg;
+            </div>
+          </div>
+
+          <div class="upper lower">
+            <div>
+              <p>{{ city.results.weather[0].description }}</p>
+            </div>
+            <div>
+              <p>
+                <span>
+                  H:{{
+                    city.results.main.temp_max | number: "1.0-0"
+                  }}&deg;</span
+                >
+                <span>
+                  L:{{
+                    city.results.main.temp_min | number: "1.0-0"
+                  }}&deg;</span
+                >
+              </p>
+            </div>
+          </div>
+
+          <div class="other">
+            <div class="other-sub">
+              <p>FEELS LIKE</p>
+              <p>{{ city.results.main.feels_like }}</p>
+            </div>
+
+            <div class="other-sub">
+              <p>HUMIDITY</p>
+              <p>{{ city.results.main.humidity }}</p>
+            </div>
+
+            <div class="other-sub">
+              <p>PRESSURE</p>
+              <p>{{ city.results.main.pressure }}</p>
+            </div>
+
+            <div class="other-sub">
+              <p>WIND SPEED</p>
+              <p>{{ city.results.wind.speed }}</p>
+            </div>
+            <div class="other-sub">
+              <p>VISIBILITY</p>
+              <p>{{ city.results.visibility / 1000 }}km</p>
+            </div>
+            <div class="other-sub">
+              <p>SUNRISE</p>
+              <p>{{ city.results.sys.sunrise * 1000 | date: "hh:mm a" }}</p>
+            </div>
+            <div class="other-sub">
+              <p>SUNSET</p>
+              <p>{{ city.results.sys.sunset * 1000 | date: "hh:mm a" }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<router-outlet></router-outlet>
